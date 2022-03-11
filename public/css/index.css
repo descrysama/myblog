@@ -54,3 +54,32 @@ body {
     align-content: center;
     flex-direction: column;
 }
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    border: 1px solid rgb(53, 53, 53);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.posts-header {
+    display: flex;
+    font-weight: 700;
+    margin: 5px;
+}
+
+.posts-header::after {
+    content: ".";
+}
+
+.posts-body {
+    text-align: left;
+    margin: 5px;
+}

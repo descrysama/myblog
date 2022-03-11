@@ -9,9 +9,19 @@
     <title>FabLab Lyon | Accueil</title>
 </head>
 <body>
-<?php require('./src/components/ComponentHeader.php'); ?>
-    
-    
+    <?php require('./src/components/ComponentHeader.php'); ?>
+    <div class="container w-75">
+    <?php if (!empty($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
+        <div class="posts" <?php foreach ($posts as $post): ?>>
+            <div class="posts-header">
+                <?= $post->pseudo ?>
+            </div>
+            <div class="posts-body">
+            <?= $post->content ?>
+            </div>
+        </div>
+        <?php endforeach ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

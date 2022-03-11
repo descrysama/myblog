@@ -13,7 +13,7 @@ switch ($request) {
         require __DIR__.'/src/controllers/ControllerRegister.php';
         break;
     case '/articles':
-        require __DIR__.'/src/controllers/ControllerArticles.php';
+        require __DIR__.'/src/controllers/ControllerPosts.php';
         break;
     default:
         http_response_code(404);
