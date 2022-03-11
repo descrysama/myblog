@@ -28,7 +28,7 @@ class PostClass {
     public function getAllMessages($post_id) {
         require('./config.php');
         $req = $bdd->prepare('SELECT id, poster_id, content, date FROM comments WHERE post_id = ?');
-        $req->execute($post_id);
+        $req->execute(array($post_id));
         $getAllMessagesresult = $req->fetchAll(PDO::FETCH_OBJ);
         return $getAllMessagesresult;
     }
@@ -36,7 +36,7 @@ class PostClass {
     public function getCommentPoster($poster_id) {
         require('./config.php');
         $req = $bdd->prepare('SELECT pseudo FROM users WHERE id = ?');
-        $req->execute($poster_id);
+        $req->execute(array($poster_id));
         $getCommentPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
         return $getCommentPosterresult;
     }
