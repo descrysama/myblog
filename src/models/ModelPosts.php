@@ -21,16 +21,24 @@ class PostClass {
         require('./config.php');
         $req = $bdd->prepare('SELECT id, poster_id, content, date FROM posts');
         $req->execute();
-        $result = $req->fetchAll(PDO::FETCH_OBJ);
-        return $result;
+        $GetAllPostsResult = $req->fetchAll(PDO::FETCH_OBJ);
+        return $GetAllPostsResult;
     }
 
-    public function getAllMessages() {
+    public function getAllMessages($post_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT id, poster_id, content, date FROM posts');
-        $req->execute();
-        $result = $req->fetchAll(PDO::FETCH_OBJ);
-        return $result;
+        $req = $bdd->prepare('SELECT id, poster_id, content, date FROM comments WHERE post_id = ?');
+        $req->execute($post_id);
+        $getAllMessagesresult = $req->fetchAll(PDO::FETCH_OBJ);
+        return $getAllMessagesresult;
+    }
+
+    public function getCommentPoster($poster_id) {
+        require('./config.php');
+        $req = $bdd->prepare('SELECT pseudo FROM users WHERE id = ?');
+        $req->execute($poster_id);
+        $getCommentPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
+        return $getCommentPosterresult;
     }
 }
 
