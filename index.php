@@ -12,7 +12,7 @@ switch ($request) {
     case '/register':
         require __DIR__.'/src/controllers/ControllerRegister.php';
         break;
-    case '/articles':
+    case '/posts':
         require __DIR__.'/src/controllers/ControllerPosts.php';
         break;
     default:

@@ -8,15 +8,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-2">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Accueil</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="articles">Articles</a>
+                    <a class="nav-link" href="posts">Posts</a>
                     </li>
                 </ul>
                 </div>
             </div>
-            <a class="btn btn-success" href="register">Inscription</a>
-            <a class="btn" href="login">Connexion</a>
+            <a class="btn btn-success" href="login">Login</a>
+            <a class="btn" href="register">Signup</a>
         </nav>
 </header>
