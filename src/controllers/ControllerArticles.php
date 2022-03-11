@@ -1,6 +1,6 @@
 <?php
 
-use Models\ModelLogin\LoginClass;
+use Models\ModelArticles\ArticleClass;
 require('./src/models/ModelArticles.php');
 
 

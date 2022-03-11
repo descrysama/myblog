@@ -1,6 +1,6 @@
 <?php
 
-use Models\ModelLogin\LoginClass;
+use Models\ModelRegister\RegisterClass;
 require('./src/models/ModelRegister.php');
 
 
