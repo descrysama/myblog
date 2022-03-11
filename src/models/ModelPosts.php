@@ -17,9 +17,9 @@ class PostClass {
         $this->date      = $date;
     }
 
-    public function GetAllPosts() {
+    public static function GetAllPosts() {
         require('./config.php');
-        $req = $bdd->prepare('SELECT id, poster_id, content, date FROM posts');
+        $req = $bdd->prepare('SELECT post_id, user_id, content, date FROM posts');
         $req->execute();
         $GetAllPostsResult = $req->fetchAll(PDO::FETCH_OBJ);
         return $GetAllPostsResult;

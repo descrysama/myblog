@@ -1,12 +1,12 @@
 <?php
 
+namespace Controllers\ControllerPosts;
+
 use Models\ModelPosts\PostClass;
 require('./src/models/ModelPosts.php');
 
+$posts = PostClass::GetAllPosts();
 
-
-$test = new PostClass('1','1','1','1');
-$posts = $test->getAllMessages($test->poster_id);
 
 
 

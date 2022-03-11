@@ -12,12 +12,10 @@
     <?php require('./src/components/ComponentHeader.php'); ?>
     <div class="container w-75">
     <?php if (!empty($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
-        <div class="posts" <?php foreach ($posts as $post): ?>>
-            <div class="posts-header">
-                <?= $post->pseudo ?>
-            </div>
+        <?php foreach ($posts as $post): ?>
+        <div class="posts">
             <div class="posts-body">
-            <?= $post->content ?>
+                <?= $post->content ?>
             </div>
         </div>
         <?php endforeach ?>
