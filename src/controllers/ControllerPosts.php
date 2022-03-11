@@ -1,6 +1,6 @@
 <?php
 
-use Models\ModelArticles\ArticleClass;
+use Models\ModelArticles\PostClass;
 require('./src/models/ModelPosts.php');
 
 

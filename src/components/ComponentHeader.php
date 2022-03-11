@@ -8,7 +8,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-2">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                    <a class="nav-link" aria-current="page" href="/">Accueil</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="articles">Articles</a>
