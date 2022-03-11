@@ -6,4 +6,3 @@ require('./src/models/ModelPosts.php');
 
 
 require('./src/views/ViewPosts.php');
-
