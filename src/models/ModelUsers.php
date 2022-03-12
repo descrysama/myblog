@@ -26,14 +26,26 @@ class UserClass {
             }
     }
 
+    public static function CorrectFormatRegister($email, $username, $password, $repassword) {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) == true && strlen($email) <= 64) {
+                if (strlen($username) <= 64) {
+                    if (strlen($password) <= 64) {
+                        if ($password == $repassword) {
+                            return true;
+                        }else { return false;}
+                    }else { return false;}
+                } else { return false;}
+            } else { return false;}
+    }
+
     public static function VerifyCredentials($email, $password) {
         require('./config.php');
         $req = $bdd->prepare('SELECT * FROM users WHERE email = ?');
-        $req->execute(array($email));
+        $req->execute(array(strtolower($email)));
         $fetch = $req->fetch();
         $rowcount = $req->rowCount();
         if ($rowcount == 1) {
-            if ($password == $fetch['password']) {
+            if (md5($password) == $fetch['password']) {
                 $correctlogin = 1;
             } else {
                 $correctlogin = 0;
@@ -69,8 +81,18 @@ class UserClass {
         $req = $bdd->prepare('UPDATE users SET email = ?, password = ? where email = ?');
         $req->execute(array(
             $newemail,
-            $newpassword,
+            md5($newpassword),
             $oldemail
+        ));
+    }
+
+    public static function CreateUser($email, $username, $password) {
+        require('./config.php');
+        $req = $bdd->prepare('INSERT INTO users (email, username, password) VALUES (?,?,?)');
+        $req->execute(array(
+            strtolower($email),
+            strtolower($username),
+            md5($password)
         ));
     }
 }

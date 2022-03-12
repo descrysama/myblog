@@ -22,7 +22,7 @@ if ($request == '/login')
                     $_SESSION['user_id'] = UserClass::GetProfile($email)['user_id'];
                     header('location:/posts');
                 } else {
-                    $logError = 'email and/or password incorrect. re-try.';
+                    echo 'email and/or password incorrect. re-try.';
                 }
             } else {
                 echo 'formulaire incorrect';
@@ -36,7 +36,21 @@ if ($request == '/login')
 } elseif ($request == '/register') 
 {
     require ('./src/views/ViewRegister.php');
-    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['retype-password'])){
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $repassword = $_POST['retype-password'];
+            if (UserClass::CorrectFormatRegister($email, $username, $password, $repassword) == true) {
+                UserClass::CreateUser($email, $username, $password);
+                sleep(2);
+                header('location:login');
+            }
+        } else {
+            echo 'formulaire incorrect';
+        }
+    }
 
 
 

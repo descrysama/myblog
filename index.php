@@ -2,7 +2,6 @@
 session_start();
 $request = $_SERVER['REQUEST_URI'];
 
-
 switch ($request) {
         case '/':
             if (isset($_SESSION['logged'])){
@@ -48,6 +47,8 @@ switch ($request) {
             session_destroy();
             unset($_SESSION['logged']);
             require __DIR__.'/src/views/disconnected.php';
+            sleep(1);
+            header('location:login');
             break;
         default:
             http_response_code(404);

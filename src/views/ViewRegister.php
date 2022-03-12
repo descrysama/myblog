@@ -10,23 +10,24 @@
 </head>
 <body>
 <?php require('./src/components/ComponentHeader.php'); ?>
-    <div class="container w-50 text-center p-2">
-        <h1>SignUp</h1>
-        <div class="input-group input-group-lg p-3">
-            <input type="email" class="form-control" placeholder="Email">
+    <form action="" method="POST">
+        <div class="container w-50 text-center p-2">
+            <h1>SignUp</h1>
+            <div class="input-group input-group-lg p-3">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="input-group input-group-lg p-3">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="input-group input-group-lg p-3">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="input-group input-group-lg p-3">
+                <input type="password" name="retype-password" class="form-control" placeholder="Repeat Password">
+            </div>
+            <input class="btn btn-success" type="submit" value="Register">
         </div>
-        <div class="input-group input-group-lg p-3">
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group input-group-lg p-3">
-            <input type="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="input-group input-group-lg p-3">
-            <input type="password" class="form-control" placeholder="Repeat Password">
-        </div>
-        
-        <input class="btn btn-success" type="submit" value="Register">
-    </div>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
