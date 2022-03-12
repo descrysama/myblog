@@ -30,14 +30,19 @@ class UserClass {
         require('./config.php');
         $req = $bdd->prepare('SELECT * FROM users WHERE email = ?');
         $req->execute(array($email));
-        $result = $req->fetch();
-        if ($password == $result['password']) {
-            $row = 1;
-        } else {
-            $row = 0;
-        }
-        if ($row == 1) {
-            return true;
+        $fetch = $req->fetch();
+        $rowcount = $req->rowCount();
+        if ($rowcount == 1) {
+            if ($password == $fetch['password']) {
+                $correctlogin = 1;
+            } else {
+                $correctlogin = 0;
+            }
+            if ($correctlogin == 1) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

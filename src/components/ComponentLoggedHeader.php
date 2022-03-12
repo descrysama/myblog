@@ -10,6 +10,9 @@
                     <li class="nav-item">
                     <a class="nav-link" href="posts">Posts</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="profile"><span>My Profile</span></a>
+                    </li>
                 </ul>
                 </div>
             </div>
