@@ -48,21 +48,25 @@ if ($request == '/login')
     $infos = UserClass::GetProfile($_SESSION['email']);
     require ('./src/views/ViewProfile.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (UserClass::VerifyCredentials($infos['email'], $_POST['current-password']) == true) {
-            if ($_POST['new-password'] == $_POST['retype-new-password']) {
-                $newemail = $_POST['email'];
-                $newpassword = $_POST['new-password'];
-                UserClass::UpdateProfile($newemail, $newpassword, $infos['email']);
-                echo 'Changements pris en compte. Vous allez être deconnecté...';
-                sleep(3);
-                session_destroy();
-                header('location:login');
-            } else{ 
-                echo 'New passwords don\'t match.';
-            }
+        if (isset($_POST['email']) && isset($_POST['current-password']) && isset($_POST['new-password']) && isset($_POST['retype-new-password'])) {
+            if (UserClass::VerifyCredentials($infos['email'], $_POST['current-password']) == true) {
+                if ($_POST['new-password'] == $_POST['retype-new-password']) {
+                    $newemail = $_POST['email'];
+                    $newpassword = $_POST['new-password'];
+                    UserClass::UpdateProfile($newemail, $newpassword, $infos['email']);
+                    echo 'Changements pris en compte. Vous allez être deconnecté...';
+                    sleep(3);
+                    session_destroy();
+                    header('location:login');
+                } else{ 
+                    echo 'New passwords don\'t match.';
+                }
+            } else { 
+                echo 'Current password does not match.'; 
+            } 
         } else { 
-            echo 'Current password does not match.'; 
-        } 
+            echo 'Formulaire non complet.'; 
+        }
     }
 
 
