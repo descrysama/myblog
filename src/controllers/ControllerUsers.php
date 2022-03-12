@@ -34,6 +34,14 @@ if ($request == '/login')
 } elseif ($request == '/register') 
 {
     require ('./src/views/ViewRegister.php');
+    
+
+
+
+
+
+
+
 } else 
 {
     require ('./src/views/404.php');

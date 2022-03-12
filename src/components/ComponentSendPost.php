@@ -1,6 +1,11 @@
-<div class="posts">
+<div id="post-form" class="posts">
+    <div class="posts-body">
+    <div class="posts-header">
+        <span>Utilisateur1</span>
+    </div>    
     <form class="d-flex flex-column" action="" method="POST">
-        <textarea name="post-content" id="post-content" cols="60" rows="5" placeholder="Il etait une fois..."></textarea>
-        <input class="btn btn-success" type="submit" value="Poster">
+        <textarea name="post-content" id="post-content" rows="5" placeholder="Il etait une fois..."></textarea>
+        <input class="btn btn-success m-2" type="submit" value="Poster">
     </form>
+    </div>
 </div>

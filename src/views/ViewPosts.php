@@ -17,12 +17,12 @@
         require('./src/components/ComponentHeader.php');
     }?>
     
-    <div class="container w-50">
-    <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
+    <div class="container w-50 d-flex justify-content-center align-items-center">
+        <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
         <?php foreach ($posts as $key=>$post): ?>
         <div class="posts">
             <div class="posts-header">
-                <?= $usernames[$key]; ?>
+                <span><?= $usernames[$key]; ?></span>
             </div>
             <div class="posts-body">
                 <?= $post->content ?>

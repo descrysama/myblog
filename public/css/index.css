@@ -61,11 +61,12 @@ span {
 .posts {
     max-width:490px;
     background: #fff;
-    margin: 0 auto;
+    margin: 0;
     margin-top: 50px;
     border-radius:3px;
     padding: 30px;
     border: 1px solid #198754;
+    word-wrap: break-word;
 }
 
 .posts-header {
@@ -74,11 +75,22 @@ span {
     font-size:14px;
 }
 
-.posts-header::after {
-    content: ".";
+.posts-header::before {
+    font-weight: 900;
+    font-style: italic;
+    content: "@";
 }
 
 .posts-body {
     text-align: left;
     margin: 5px;
+}
+
+
+/* Ids */
+
+@media screen and (min-width:600px) {
+    #post-form {
+        width: 100%;
+    }
 }
