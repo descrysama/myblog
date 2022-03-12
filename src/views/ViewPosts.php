@@ -18,7 +18,7 @@
     }?>
     
     <div class="container w-50 d-flex justify-content-center align-items-center">
-        <h4>Bienvenue <span><?php echo $_SESSION['username']; ?></span></h4>
+        <h4>Bienvenue <span><?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}?></span></h4>
         <div class="post-container">
         <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
             <?php foreach ($posts as $key=>$post): ?>
