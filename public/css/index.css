@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Fira Sans Condensed', sans-serif;
-    background-color: rgb(255, 255, 249);
+    background-color: rgb(241, 241, 241);
 }
 
 
@@ -15,6 +15,9 @@ body {
     align-items:center;
 }
 
+span {
+    font-weight: 900;
+}
 
 
 /* SECTIONS */
@@ -56,23 +59,19 @@ body {
 }
 
 .posts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3px;
-    border: 1px solid rgb(53, 53, 53);
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 10px;
+    max-width:490px;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius:3px;
+    padding: 30px;
+    border: 1px solid #198754;
 }
 
 .posts-header {
     display: flex;
-    font-weight: 700;
-    margin: 5px;
+    align-items:flex-start;
+    font-size:14px;
 }
 
 .posts-header::after {

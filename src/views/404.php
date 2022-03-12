@@ -9,7 +9,11 @@
     <title>FabLab Lyon | Accueil</title>
 </head>
 <body>
-    <?php require('./src/components/ComponentHeader.php'); ?>
+    <?php if (isset($_SESSION['logged'])) {
+        require('./src/components/ComponentLoggedHeader.php');
+    } else {
+        require('./src/components/ComponentHeader.php');
+    }?>
     <div class="container text-center">
         <h1>Error 404. Please enter a correct Url.</h1><a href="/">Home</a>
     </div>
