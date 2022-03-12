@@ -33,10 +33,10 @@ class PostClass {
         return $getAllMessagesresult;
     }
 
-    public function getCommentPoster($poster_id) {
+    public static function getCommentPoster($user_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT pseudo FROM users WHERE id = ?');
-        $req->execute(array($poster_id));
+        $req = $bdd->prepare('SELECT * FROM users WHERE user_id = ?');
+        $req->execute(array($user_id));
         $getCommentPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
         return $getCommentPosterresult;
     }

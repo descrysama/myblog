@@ -12,8 +12,11 @@
     <?php require('./src/components/ComponentHeader.php'); ?>
     <div class="container w-75">
     <?php if (!empty($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
-        <?php foreach ($posts as $post): ?>
+        <?php foreach ($posts as $key=>$post): ?>
         <div class="posts">
+            <div class="posts-header">
+                <?= $usernames[$key]; ?>
+            </div>
             <div class="posts-body">
                 <?= $post->content ?>
             </div>

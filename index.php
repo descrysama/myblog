@@ -7,10 +7,10 @@ switch ($request) {
         require 'public/home.php';
         break;
     case '/login':
-        require __DIR__.'/src/controllers/ControllerLogin.php';
+        require __DIR__.'/src/controllers/ControllerUsers.php';
         break;
     case '/register':
-        require __DIR__.'/src/controllers/ControllerRegister.php';
+        require __DIR__.'/src/controllers/ControllerUsers.php';
         break;
     case '/posts':
         require __DIR__.'/src/controllers/ControllerPosts.php';
