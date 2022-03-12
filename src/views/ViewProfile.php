@@ -17,7 +17,7 @@
         require('./src/components/ComponentHeader.php');
     }?>
     <div class="container w-50 p-4">
-        <h2>Profile : </h2>
+        <h2>Profile de <span><?php echo $_SESSION['username']; ?></span></h2>
         <h5><span>Role : </span><?php if ($infos['role'] == 0) {echo 'Utilisateur';} elseif ($infos['role'] == 1) {echo 'Admin';} ?></h5>
         <form action="" method="POST">
             <div class="input-group mb-3">
