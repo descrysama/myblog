@@ -19,6 +19,7 @@ if ($request == '/login')
                     $_SESSION['logged'] = true;
                     $_SESSION['username'] = UserClass::GetUsername($email);
                     $_SESSION['email'] = $email;
+                    $_SESSION['user_id'] = UserClass::GetProfile($email)['user_id'];
                     header('location:/posts');
                 } else {
                     $logError = 'email and/or password incorrect. re-try.';

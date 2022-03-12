@@ -13,3 +13,6 @@ foreach($posts as $post):
 endforeach;
 
 require('./src/views/ViewPosts.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    PostClass::addPost($_SESSION['user_id'], $_POST['post-content']);
+}

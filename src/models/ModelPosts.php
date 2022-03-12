@@ -19,7 +19,7 @@ class PostClass {
 
     public static function GetAllPosts() {
         require('./config.php');
-        $req = $bdd->prepare('SELECT post_id, user_id, content, date FROM posts');
+        $req = $bdd->prepare('SELECT post_id, user_id, content, date FROM posts ORDER BY post_id DESC');
         $req->execute();
         $GetAllPostsResult = $req->fetchAll(PDO::FETCH_OBJ);
         return $GetAllPostsResult;
@@ -39,6 +39,17 @@ class PostClass {
         $req->execute(array($user_id));
         $getCommentPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
         return $getCommentPosterresult;
+    }
+
+    public static function addPost($user_id, $content) {
+        require('./config.php');
+        $req = $bdd->prepare('INSERT INTO posts (user_id, content) VALUES (?,?)');
+        $req = $req->execute(array(
+            $user_id,
+            $content
+        ));
+        unset($_POST);
+        header('location:/posts');
     }
 }
 
