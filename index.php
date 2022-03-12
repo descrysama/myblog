@@ -14,8 +14,7 @@ switch ($request) {
             }
             case '/home':
                 if (isset($_SESSION['logged'])){
-                    require __DIR__.'/src/controllers/ControllerPosts.php';
-                    break;
+                    header('location:/posts');
                 } else {
                     header('location:/');
                 }
@@ -37,7 +36,7 @@ switch ($request) {
             }
         case '/profile':
             if (isset($_SESSION['logged'])){
-                require __DIR__.'/src/controllers/ControllerProfile.php';
+                require __DIR__.'/src/controllers/ControllerUsers.php';
                 break;
             } else {
                 header('location:login');

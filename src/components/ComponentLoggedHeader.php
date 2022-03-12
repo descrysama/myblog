@@ -11,7 +11,7 @@
                     <a class="nav-link" href="posts">Posts</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="profile"><span>My Profile</span></a>
+                    <a class="nav-link" href="profile">My Profile</a>
                     </li>
                 </ul>
                 </div>

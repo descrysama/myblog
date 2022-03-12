@@ -55,4 +55,22 @@ class UserClass {
         $result = $req->fetch();
         return $result['username'];
     }
+
+    public static function GetProfile($email) {
+        require('./config.php');
+        $req = $bdd->prepare('SELECT * FROM users WHERE email = ?');
+        $req->execute(array($email));
+        $result = $req->fetch();
+        return $result;
+    }
+
+    public static function UpdateProfile($newemail, $newpassword, $oldemail) {
+        require('./config.php');
+        $req = $bdd->prepare('UPDATE users SET email = ?, password = ? where email = ?');
+        $req->execute(array(
+            $newemail,
+            $newpassword,
+            $oldemail
+        ));
+    }
 }
