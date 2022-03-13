@@ -23,12 +23,14 @@ class PostClass {
         return $GetAllPostsResult;
     }
 
-    public function getAllMessages($post_id) {
+    public static function GetComments() {
         require('./config.php');
-        $req = $bdd->prepare('SELECT id, poster_id, content, date FROM comments WHERE post_id = ?');
-        $req->execute(array($post_id));
-        $getAllMessagesresult = $req->fetchAll(PDO::FETCH_OBJ);
+        $req = $bdd->prepare('SELECT * FROM posts INNER JOIN comments WHERE posts.post_id = comments.target_id');
+        $req->execute();
+        $GetCommentsResult = $req->fetchAll(PDO::FETCH_OBJ);
+        return $GetCommentsResult;
     }
+
 
     public static function getCommentPoster($user_id) {
         require('./config.php');

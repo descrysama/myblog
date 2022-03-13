@@ -26,16 +26,17 @@
                     <span><?= $post->date ?></span>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $post->post_id ?>" aria-expanded="false" aria-controls="collapseOne">
                             Comments :
                         </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapse<?= $post->post_id ?>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                            <div class="posts-header">
-                                <span><?= $usernames[$key] ?></span></div>
-                                <div class="posts-body"><?= $post->content ?></div>
-                                <span><?= $post->date ?></span>
+                                <div class="posts">
+                                    <div class="posts-body">
+                                        
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
