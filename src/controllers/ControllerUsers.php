@@ -43,9 +43,14 @@ if ($request == '/login')
             $password = $_POST['password'];
             $repassword = $_POST['retype-password'];
             if (UserClass::CorrectFormatRegister($email, $username, $password, $repassword) == true) {
-                UserClass::CreateUser($email, $username, $password);
-                sleep(2);
-                header('location:login');
+                if (UserClass::CheckAvailability($email, $username) == true) {
+                    UserClass::CreateUser($email, $username, $password);
+                    sleep(2);
+                    header('location:login');
+                } else {
+                    echo 'Email et/ou Username déjà utilisés.';
+                }
+                    
             }
         } else {
             echo 'formulaire incorrect';

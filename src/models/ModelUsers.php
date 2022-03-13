@@ -86,6 +86,21 @@ class UserClass {
         ));
     }
 
+    public static function CheckAvailability($email, $username) {
+        require('./config.php');
+        $req = $bdd->prepare('SELECT email, username FROM users WHERE email = ? OR username = ?');
+        $req->execute(array(
+            strtolower($email),
+            strtolower($username)
+        ));
+        $row = $req->rowCount();
+        if ($row == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function CreateUser($email, $username, $password) {
         require('./config.php');
         $req = $bdd->prepare('INSERT INTO users (email, username, password) VALUES (?,?,?)');
