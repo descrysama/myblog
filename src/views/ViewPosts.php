@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,25 +13,39 @@
         require('./src/components/ComponentLoggedHeader.php');
     } else {
         require('./src/components/ComponentHeader.php');
-    }?>
-    
+    }
+    ?>
     <div class="container w-50 d-flex justify-content-center align-items-center">
         <h4>Bienvenue <span><?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}?></span></h4>
         <div class="post-container">
-        <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');} ?>
-            <?php foreach ($posts as $key=>$post): ?>
+        <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');}?>
+            <?php foreach ($posts as $key=>$post) :?>
             <div class="posts">
-                <div class="posts-header">
-                    <span><?= $usernames[$key]; ?></span>
-                </div>
-                <div class="posts-body">
-                    <?= $post->content ?>
-                </div><span><?= $post->date ?></span>
+                <div class="posts-header"><span><?= $usernames[$key] ?></span></div>
+                <div class="posts-body"><?= $post->content ?></div>
+                    <span><?= $post->date ?></span>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Comments :
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                            <div class="posts-header">
+                                <span><?= $usernames[$key] ?></span></div>
+                                <div class="posts-body"><?= $post->content ?></div>
+                                <span><?= $post->date ?></span>
+                            </div>
+                        </div>
+                    </div>
             </div>
-            <?php endforeach ?>
+            <?php endforeach;?>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

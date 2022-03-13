@@ -9,12 +9,10 @@ class PostClass {
     public $content;
     public $date;
 
-    public function __construct($id, $poster_id, $content, $date)
+    public function __construct($poster_id, $content)
     {
-        $this->id        = $id;
         $this->poster_id = $poster_id;
         $this->content   = $content;
-        $this->date      = $date;
     }
 
     public static function GetAllPosts() {
@@ -30,7 +28,6 @@ class PostClass {
         $req = $bdd->prepare('SELECT id, poster_id, content, date FROM comments WHERE post_id = ?');
         $req->execute(array($post_id));
         $getAllMessagesresult = $req->fetchAll(PDO::FETCH_OBJ);
-        return $getAllMessagesresult;
     }
 
     public static function getCommentPoster($user_id) {
@@ -41,17 +38,14 @@ class PostClass {
         return $getCommentPosterresult;
     }
 
-    public static function addPost($user_id, $content) {
+    public static function addPost($poster_id, $content) {
         require('./config.php');
-        $req = $bdd->prepare('INSERT INTO posts (user_id, content) VALUES (?,?)');
-        $req = $req->execute(array(
-            $user_id,
-            $content
-        ));
-        unset($_POST);
-        header('location:/posts');
+        if (strlen($content) <= 280) {
+            $req = $bdd->prepare('INSERT INTO posts (user_id, content) VALUES (?,?)');
+            $req = $req->execute(array(
+                $poster_id,
+                $content
+            ));
+        } else { echo 'Invalid Post. Check length or character type.';}
     }
 }
-
-
-?>

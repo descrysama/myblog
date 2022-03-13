@@ -88,15 +88,7 @@ if ($request == '/login')
             echo 'Formulaire non complet.'; 
         }
     }
-
-
-
-
-
-
 } else 
 {
     require ('./src/views/404.php');
 }
-
-

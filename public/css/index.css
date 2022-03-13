@@ -94,8 +94,9 @@ span {
     flex-direction: auto;
     align-items: auto;
     width: auto;
-    height: 800px;
+    max-height: 700px;
     overflow-y: auto;
+    border: 5px solid rgb(235, 235, 235);
 }
 
 

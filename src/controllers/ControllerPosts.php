@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers\ControllerPosts;
+ob_start();
 
 use Models\ModelPosts\PostClass;
 require('./src/models/ModelPosts.php');
@@ -12,7 +13,9 @@ foreach($posts as $post):
     array_push($usernames, $username[0]->username);
 endforeach;
 
-require('./src/views/ViewPosts.php');
+require_once('./src/views/ViewPosts.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     PostClass::addPost($_SESSION['user_id'], $_POST['post-content']);
+    header('location:posts');
+    ob_end_flush();
 }
