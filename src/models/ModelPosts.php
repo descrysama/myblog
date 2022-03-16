@@ -35,7 +35,7 @@ class PostClass {
 
     public static function GetComments($post_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT * FROM comments WHERE post_id = ?');
+        $req = $bdd->prepare('SELECT * FROM comments WHERE post_id = ? ORDER BY id DESC');
         $req->execute(array(
             $post_id
         ));
@@ -44,12 +44,12 @@ class PostClass {
     }
 
 
-    public static function getCommentPoster($user_id) {
+    public static function getPoster($user_id) {
         require('./config.php');
         $req = $bdd->prepare('SELECT * FROM users WHERE user_id = ?');
         $req->execute(array($user_id));
-        $getCommentPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
-        return $getCommentPosterresult;
+        $getPosterresult = $req->fetchAll(PDO::FETCH_OBJ);
+        return $getPosterresult;
     }
 
     public static function addPost($poster_id, $title, $content) {
@@ -64,6 +64,18 @@ class PostClass {
                 ));
             }
         } else { echo 'Invalid Post. Check length or character type.';}
+    }
+    
+    public static function addComment($poster_id, $post_id, $content) {
+        require('./config.php');
+        if (strlen($content) <= 255) {
+            $req = $bdd->prepare('INSERT INTO comments (poster_id, post_id, content) VALUES (?,?,?)');
+            $req = $req->execute(array(
+                $poster_id,
+                $post_id,
+                $content
+            ));
+        } else { echo 'Invalid Comment. Check length or character type.';}
     }
 
     public static function selectPostNumber() {

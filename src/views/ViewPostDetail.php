@@ -19,8 +19,8 @@ use Models\ModelPosts\PostClass;
         require('./src/components/ComponentHeader.php');
     }
     ?>
-    <div class="container w-50 d-flex justify-content-center align-items-center">
-        <div class="container-xl text-center d-flex justify-content-center flex-column m-2">
+    <div class="container-xxl d-flex justify-content-center align-items-center">
+        <div class="container-xl text-center d-flex justify-content-center m-2">
             <div class="posts">
                 <div class="detail-header">
                     <h1 id="titre"><span>Titre : </span><?php echo $getSinglePost[0]->title ?></h1>
@@ -30,14 +30,18 @@ use Models\ModelPosts\PostClass;
                 </div>
                 <div class="detail-body">
                     <p><?php echo $getSinglePost[0]->content ?></p>
-                    <p>Author : <span><?php echo $user[0]->username  ?></span></p>
+                    <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                 </div>
             </div>
-            <div class="posts-container">
+            <div class="comment-container m-2">
+                <?php  if (isset($_SESSION['logged'])) {
+                        require('./src/components/ComponentSendComment.php');
+                    }
+                ?>
                 <?php foreach ($getComments as $comment): ?>
                 <div class="posts">
                     <div class="posts-header">
-                        
+                        <p>Author: <span><?= $Commentuser[0]->username ?></span></p>
                     </div>
                     <div class="posts-body">
                         <?= $comment->content ?>

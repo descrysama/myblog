@@ -84,7 +84,6 @@ input {
     font-style: italic;
     align-items: flex-start;
     font-size: 14px;
-    max-width: 100ch;
 }
 
 
@@ -104,6 +103,16 @@ input {
     align-items: auto;
     width: auto;
     max-height: 700px;
+    overflow-y: auto;
+    border: 5px solid rgb(235, 235, 235);
+}
+
+.comment-container {
+    display: block;
+    flex-direction: auto;
+    align-items: auto;
+    width: auto;
+    max-height: 600px;
     overflow-y: auto;
     border: 5px solid rgb(235, 235, 235);
 }

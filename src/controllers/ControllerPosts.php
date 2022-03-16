@@ -17,7 +17,7 @@ foreach ($articleId as $myids) {
 }
 
 foreach($posts as $post):
-    $username = PostClass::getCommentPoster($post->user_id);
+    $username = PostClass::getPoster($post->user_id);
     array_push($usernames, $username[0]->username);
 endforeach;
 
@@ -38,8 +38,14 @@ if (isset($separator[2])) {
         $idPost = $separator[2];
         $getSinglePost = PostClass::GetSinglePost($idPost);
         $getComments = PostClass::getComments($idPost);
-        $user = PostClass::getCommentPoster($getSinglePost[0]->user_id);
+        $Postuser = PostClass::getPoster($getSinglePost[0]->user_id);
+        if (!empty($getComments)) {
+            $Commentuser = PostClass::getPoster($getComments[0]->poster_id);
+        }
         require_once('./src/views/ViewPostDetail.php');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            PostClass::addComment($_SESSION['user_id'], $idPost, $_POST['comment-content']);
+        }
     } else{
         header('location:../error');
     }
