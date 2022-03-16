@@ -45,6 +45,8 @@ if (isset($separator[2])) {
         require_once('./src/views/ViewPostDetail.php');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             PostClass::addComment($_SESSION['user_id'], $idPost, $_POST['comment-content']);
+            header('location:'.$idPost);
+            ob_end_flush();
         }
     } else{
         header('location:../error');
