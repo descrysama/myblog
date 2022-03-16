@@ -23,7 +23,7 @@
             <div class="posts">
                 <div>Title : <span><?= $post->title ?></span></div>
                 <div class="posts-header"><span>Author : <?= $usernames[$key] ?></span></div>
-                <div class="posts-body"><?= $post->content ?></div>
+                <div class="posts-body"><span>Article length : </span><?= strlen($post->content) ?> characters</div>
                 <span><?= $post->date ?></span><br>
                 <a href="./post/<?php echo $post->post_id?>">Voir détails...</a>
             </div>

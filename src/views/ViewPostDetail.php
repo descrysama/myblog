@@ -5,23 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/css/index.css">
+    <link rel="stylesheet" href="../public/css/index.css">
     <title>FabLab Lyon | Accueil</title>
 </head>
 <body>
-    <?php if (isset($_SESSION['logged'])) {
+    <?php
+
+use Models\ModelPosts\PostClass;
+
+ if (isset($_SESSION['logged'])) {
         require('./src/components/ComponentLoggedHeader.php');
     } else {
         require('./src/components/ComponentHeader.php');
     }
     ?>
     <div class="container w-50 d-flex justify-content-center align-items-center">
-        <div class="posts">
-            <div class="posts-header">
-                Title : <?php $getSinglePost->title ?>
+        <div class="container-xl text-center d-flex justify-content-center flex-column m-2">
+            <div class="posts">
+                <div class="detail-header">
+                    <h1 id="titre"><span>Titre : </span><?php echo $getSinglePost[0]->title ?></h1>
+                </div>
+                <div class="detail-img">
+                    
+                </div>
+                <div class="detail-body">
+                    <p><?php echo $getSinglePost[0]->content ?></p>
+                    <p>Author : <span><?php echo $user[0]->username  ?></span></p>
+                </div>
             </div>
-            <div class="posts-body">
-
+            <div class="posts-container">
+                <?php foreach ($getComments as $comment): ?>
+                <div class="posts">
+                    <div class="posts-header">
+                        
+                    </div>
+                    <div class="posts-body">
+                        <?= $comment->content ?>
+                    </div>
+                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

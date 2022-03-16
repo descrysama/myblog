@@ -8,14 +8,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-2">
                     <li class="nav-item">
-                    <a class="nav-link" href="../posts">Posts</a>
+                    <a class="nav-link" href="<?php __DIR__ ?>/posts">Posts</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="../profile">My Profile</a>
+                    <a class="nav-link" href="<?php __DIR__ ?>/profile">My Profile</a>
                     </li>
                 </ul>
                 </div>
             </div>
-            <a class="btn btn-danger" href="disconnect">Disconnect</a>
+            <a class="btn btn-danger" href="<?php __DIR__ ?>/disconnect">Disconnect</a>
         </nav>
 </header>

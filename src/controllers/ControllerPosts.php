@@ -35,7 +35,10 @@ if ($request == "/posts") {
 
 if (isset($separator[2])) {
     if (in_array($separator[2], $articlesID)){
-        $getSinglePost = PostClass::GetSinglePost($separator[2]);
+        $idPost = $separator[2];
+        $getSinglePost = PostClass::GetSinglePost($idPost);
+        $getComments = PostClass::getComments($idPost);
+        $user = PostClass::getCommentPoster($getSinglePost[0]->user_id);
         require_once('./src/views/ViewPostDetail.php');
     } else{
         header('location:../error');

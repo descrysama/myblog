@@ -35,7 +35,7 @@ class PostClass {
 
     public static function GetComments($post_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT * FROM posts INNER JOIN comments WHERE posts.post_id = ? = comments.target_id');
+        $req = $bdd->prepare('SELECT * FROM comments WHERE post_id = ?');
         $req->execute(array(
             $post_id
         ));
@@ -54,7 +54,7 @@ class PostClass {
 
     public static function addPost($poster_id, $title, $content) {
         require('./config.php');
-        if (strlen($content) <= 600) {
+        if (strlen($content) <= 3000) {
             if (strlen($title) <= 50) {
                 $req = $bdd->prepare('INSERT INTO posts (user_id, title, content) VALUES (?,?,?)');
                 $req = $req->execute(array(
