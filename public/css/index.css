@@ -19,6 +19,10 @@ span {
     font-weight: 900;
 }
 
+input {
+    margin-bottom: 5px;
+}
+
 
 /* SECTIONS */
 
@@ -72,15 +76,11 @@ span {
 
 .posts-header {
     display: flex;
+    font-style: italic;
     align-items:flex-start;
     font-size:14px;
 }
 
-.posts-header::before {
-    font-weight: 900;
-    font-style: italic;
-    content: "@";
-}
 
 .posts-body {
     text-align: left;

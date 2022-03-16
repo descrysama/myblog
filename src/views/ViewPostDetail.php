@@ -16,18 +16,13 @@
     }
     ?>
     <div class="container w-50 d-flex justify-content-center align-items-center">
-        <h4>Bienvenue <span><?php if (isset($_SESSION['username'])) {echo $_SESSION['username'];}?></span></h4>
-        <div class="post-container">
-            <?php if (isset($_SESSION['logged'])) {require('./src/components/ComponentSendPost.php');}?>
-            <?php foreach ($posts as $key=>$post) :?>
-            <div class="posts">
-                <div>Title : <span><?= $post->title ?></span></div>
-                <div class="posts-header"><span>Author : <?= $usernames[$key] ?></span></div>
-                <div class="posts-body"><?= $post->content ?></div>
-                <span><?= $post->date ?></span><br>
-                <a href="./post/<?php echo $post->post_id?>">Voir détails...</a>
+        <div class="posts">
+            <div class="posts-header">
+                Title : <?php $getSinglePost->title ?>
             </div>
-            <?php endforeach;?>
+            <div class="posts-body">
+
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

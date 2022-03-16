@@ -2,7 +2,10 @@
 session_start();
 $request = $_SERVER['REQUEST_URI'];
 
-switch ($request) {
+$separator = explode('/', $request);
+
+if (!isset($separator[2])) {
+    switch ($request) {
         case '/':
             if (isset($_SESSION['logged'])){
                 require __DIR__.'/src/controllers/ControllerPosts.php';
@@ -52,9 +55,18 @@ switch ($request) {
             break;
         default:
             http_response_code(404);
-            require __DIR__ . '/src/views/404.php';
+            require __DIR__ .'/src/views/404.php';
             break;  
+    }   
+} else {
+    switch ($request) {
+        case '/post/'.$separator[2]:
+            require __DIR__.'/src/controllers/ControllerPosts.php';
+            break;
+    }
 }
+
+
 
 
 ?>
