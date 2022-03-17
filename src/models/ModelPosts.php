@@ -25,7 +25,7 @@ class PostClass {
 
     public static function GetSinglePost($post_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT post_id, user_id, title, content, date FROM posts WHERE post_id = ?');
+        $req = $bdd->prepare('SELECT post_id, user_id, title, content, is_modified, date FROM posts WHERE post_id = ?');
         $req->execute(array(
             $post_id
         ));
@@ -70,10 +70,11 @@ class PostClass {
         require('./config.php');
         if (strlen($content) <= 3000) {
             if (strlen($title) <= 50) {
-                    $req = $bdd->prepare('UPDATE posts SET title = ?, content = ? WHERE post_id = ?');
+                    $req = $bdd->prepare('UPDATE posts SET title = ?, content = ?, is_modified = ? WHERE post_id = ?');
                     $req = $req->execute(array(
                     $title,
                     $content,
+                    1,
                     $post_id
                     ));
             }
