@@ -78,6 +78,18 @@ class PostClass {
         } else { echo 'Invalid Comment. Check length or character type.';}
     }
 
+    public static function DeletePost($userid, $postid){
+        require('./config.php');
+        $thepost = PostClass::GetSinglePost($postid);
+        if ($userid == $thepost[0]->user_id) {
+
+        }
+        $req = $bdd->prepare('DELETE FROM posts WHERE post_id = ?');
+        $req->execute(array(
+            $postid
+        ));
+    }
+
     public static function selectPostNumber() {
         require('./config.php');
         $req = $bdd->prepare('SELECT post_id FROM posts');

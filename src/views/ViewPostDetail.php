@@ -33,7 +33,34 @@ use Models\ModelPosts\PostClass;
                     <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                     <p>Date : <span><?php echo $getSinglePost[0]->date  ?></span></p>
                     <?php if ($getSinglePost[0]->user_id == $_SESSION['user_id']): ?>
-                        <button class="btn btn-success">Edit Post</button>
+                        <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePost">
+                    Delete Post
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="DeletePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete it ? This will be forever removed and it's comments too.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <form action="" method="POST">
+                                <input type="hidden" name="delete" value="true">
+                                <input type="submit" class="btn btn-danger" value="Delete post">
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                     <?php endif ?>
                 </div>
             </div>

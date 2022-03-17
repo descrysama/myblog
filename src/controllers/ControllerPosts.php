@@ -44,10 +44,19 @@ if (isset($separator[2])) {
         }
         require_once('./src/views/ViewPostDetail.php');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            PostClass::addComment($_SESSION['user_id'], $idPost, $_POST['comment-content']);
-            header('location:'.$idPost);
-            ob_end_flush();
+            if (isset($_POST['comment-content'])) {
+                PostClass::addComment($_SESSION['user_id'], $idPost, $_POST['comment-content']);
+                header('location:'.$idPost);
+                ob_end_flush();
+            }
         }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['delete'])) {
+                PostClass::DeletePost($_SESSION['user_id'], $idPost);
+                header('location:../posts');
+            }
+        }
+
     } else{
         header('location:../error');
     }
