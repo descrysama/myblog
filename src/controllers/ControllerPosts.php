@@ -52,6 +52,7 @@ if (isset($separator[2])) {
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['delete'])) {
+                PostClass::DeleteComments($_SESSION['user_id'], $idPost);
                 PostClass::DeletePost($_SESSION['user_id'], $idPost);
                 header('location:../posts');
             }

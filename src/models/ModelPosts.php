@@ -82,12 +82,24 @@ class PostClass {
         require('./config.php');
         $thepost = PostClass::GetSinglePost($postid);
         if ($userid == $thepost[0]->user_id) {
-
+            $req = $bdd->prepare('DELETE FROM posts WHERE post_id = ?');
+            $req->execute(array(
+                $postid
+            ));
         }
-        $req = $bdd->prepare('DELETE FROM posts WHERE post_id = ?');
-        $req->execute(array(
-            $postid
-        ));
+        
+    }
+
+    public static function DeleteComments($userid, $postid){
+        require('./config.php');
+        $thepost = PostClass::GetSinglePost($postid);
+        if ($userid == $thepost[0]->user_id) {
+            $req = $bdd->prepare('DELETE FROM comments WHERE post_id = ?');
+            $req->execute(array(
+                $postid
+            ));
+        }
+        
     }
 
     public static function selectPostNumber() {
