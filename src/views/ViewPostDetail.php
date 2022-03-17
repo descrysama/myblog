@@ -33,7 +33,7 @@ use Models\ModelPosts\PostClass;
                     <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                     <p>Date : <span><?php echo $getSinglePost[0]->date  ?></span></p>
                     <?php if ($getSinglePost[0]->user_id == $_SESSION['user_id']): ?>
-                        <button class="btn btn-primary">Edit Post</button>
+                        <button class="btn btn-success">Edit Post</button>
                     <?php endif ?>
                 </div>
             </div>
