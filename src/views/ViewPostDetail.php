@@ -33,7 +33,7 @@ use Models\ModelPosts\PostClass;
                     <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                     <p>Date : <span><?php echo $getSinglePost[0]->date  ?></span></p>
                     <p><span style="font-style: italic;"><?php if($getSinglePost[0]->is_modified == 1) {echo 'edited';}?></span></p>
-                    <?php if ($getSinglePost[0]->user_id == $_SESSION['user_id']): ?>
+                    <?php if (isset($_SESSION['logged']) && $getSinglePost[0]->user_id == $_SESSION['user_id']): ?>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePost">
                     Delete...
                     </button>
