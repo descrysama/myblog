@@ -67,7 +67,7 @@ use Models\ModelPosts\PostClass;
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
