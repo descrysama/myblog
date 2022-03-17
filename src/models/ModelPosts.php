@@ -65,6 +65,20 @@ class PostClass {
             }
         } else { echo 'Invalid Post. Check length or character type.';}
     }
+
+    public static function editPost($title, $content, $post_id) {
+        require('./config.php');
+        if (strlen($content) <= 3000) {
+            if (strlen($title) <= 50) {
+                    $req = $bdd->prepare('UPDATE posts SET title = ?, content = ? WHERE post_id = ?');
+                    $req = $req->execute(array(
+                    $title,
+                    $content,
+                    $post_id
+                    ));
+            }
+        } else { echo 'Invalid Post. Check length or character type.';}
+    }
     
     public static function addComment($poster_id, $post_id, $content) {
         require('./config.php');
@@ -101,6 +115,7 @@ class PostClass {
         }
         
     }
+
 
     public static function selectPostNumber() {
         require('./config.php');

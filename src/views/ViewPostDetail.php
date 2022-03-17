@@ -33,33 +33,55 @@ use Models\ModelPosts\PostClass;
                     <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                     <p>Date : <span><?php echo $getSinglePost[0]->date  ?></span></p>
                     <?php if ($getSinglePost[0]->user_id == $_SESSION['user_id']): ?>
-                        <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePost">
-                    Delete Post
+                    Delete...
+                    </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditPost">
+                    Edit...
                     </button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="DeletePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete it ? This will be forever removed and it's comments too.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <form action="" method="POST">
-                                <input type="hidden" name="delete" value="true">
-                                <input type="submit" class="btn btn-danger" value="Delete post">
-                            </form>
-                        </div>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete it ? This will be forever removed and it's comments too.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="delete" value="true">
+                                    <input type="submit" class="btn btn-danger" value="Delete post">
+                                </form>
+                            </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="EditPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <form class="d-flex flex-column" action="" method="POST">
+                                <input type="text" name="title" id="title" placeholder="titre">
+                                <textarea name="edit-post-content" id="edit-post-content" rows="5" placeholder="Il etait une fois..."></textarea>
+                                <!-- <input type="file" name="image" id="image"> -->
+                                <input class="btn btn-success m-2" type="submit" value="Poster">
+                            </form>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                     <?php endif ?>
                 </div>

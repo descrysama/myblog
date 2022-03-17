@@ -58,6 +58,13 @@ if (isset($separator[2])) {
             }
         }
 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['edit-post-content'])) {
+                PostClass::editPost($_POST['title'], $_POST['edit-post-content'],$idPost);
+                header('location:../post/'.$idPost);
+            }
+        }
+
     } else{
         header('location:../error');
     }
