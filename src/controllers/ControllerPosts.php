@@ -26,6 +26,7 @@ if ($request == "/posts") {
     require_once('./src/views/ViewPosts.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         PostClass::addPost($_SESSION['user_id'], $_POST['title'],$_POST['post-content']);
+        
         header('location:posts');
         ob_end_flush();
     }

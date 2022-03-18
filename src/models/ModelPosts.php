@@ -25,7 +25,7 @@ class PostClass {
 
     public static function GetSinglePost($post_id) {
         require('./config.php');
-        $req = $bdd->prepare('SELECT post_id, user_id, title, content, is_modified, date FROM posts WHERE post_id = ?');
+        $req = $bdd->prepare('SELECT post_id, user_id, title, content, image_path, is_modified, date FROM posts WHERE post_id = ?');
         $req->execute(array(
             $post_id
         ));

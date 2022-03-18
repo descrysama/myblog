@@ -1,0 +1,1 @@
+<img style="width: 15rem" src="<?= $getSinglePost[0]->image_path ?>" alt="image de l'article">

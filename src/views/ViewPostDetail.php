@@ -26,9 +26,13 @@ use Models\ModelPosts\PostClass;
                     <h1 id="titre"><span>Titre : </span><?php echo $getSinglePost[0]->title ?></h1>
                 </div>
                 <div class="detail-img">
-                    
+                
                 </div>
                 <div class="detail-body">
+                    <?php if (isset($getSinglePost[0]->image_path)) {
+                        require('./src/components/ComponentImg.php');
+                    }
+                    ?>
                     <p><?php echo $getSinglePost[0]->content ?></p>
                     <p>Author : <span><?php echo $Postuser[0]->username  ?></span></p>
                     <p>Date : <span><?php echo $getSinglePost[0]->date  ?></span></p>
@@ -77,7 +81,7 @@ use Models\ModelPosts\PostClass;
                             <form class="d-flex flex-column" action="" method="POST">
                                 <input type="text" name="title" id="title" placeholder="titre">
                                 <textarea name="edit-post-content" id="edit-post-content" rows="5" placeholder="Il etait une fois..."></textarea>
-                                <!-- <input type="file" name="image" id="image"> -->
+                                <input type="file" name="image" id="image">
                                 <input class="btn btn-success m-2" type="submit" value="Poster">
                             </form>
                             </div>
