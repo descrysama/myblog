@@ -3,7 +3,7 @@
     <div class="posts-header">
         <span><?php echo $_SESSION['username']; ?></span>
     </div>    
-    <form class="d-flex flex-column" action="" method="POST">
+    <form class="d-flex flex-column" action="" method="POST" enctype="multipart/form-data">
         <input type="text" name="title" id="title" placeholder="titre">
         <textarea name="post-content" id="post-content" name ="post-content" rows="5" placeholder="Il etait une fois..."></textarea>
         <input type="file" name="image" id="image">

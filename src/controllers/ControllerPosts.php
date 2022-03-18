@@ -25,10 +25,20 @@ endforeach;
 if ($request == "/posts") {
     require_once('./src/views/ViewPosts.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        PostClass::addPost($_SESSION['user_id'], $_POST['title'],$_POST['post-content']);
-        
-        header('location:posts');
-        ob_end_flush();
+        if (!empty($_FILES['image']['name'])) {
+            $image = $_FILES['image'];
+            $image['name'] = rand(1, 1000000).'.png';
+            $uploadDirectory = './public/img/img-posts/';
+            $ImgPathLanding = $uploadDirectory.'img-'.basename($image['name']);
+            move_uploaded_file($image['tmp_name'], $ImgPathLanding);
+            PostClass::addPost($_SESSION['user_id'], $_POST['title'],$_POST['post-content'], $ImgPathLanding);
+            header('location:posts');
+            ob_end_flush();
+        } else {
+            PostClass::addPost($_SESSION['user_id'], $_POST['title'],$_POST['post-content'], NULL);
+            header('location:posts');
+            ob_end_flush();
+        }
     }
 }
 
@@ -55,6 +65,7 @@ if (isset($separator[2])) {
             if (isset($_POST['delete'])) {
                 PostClass::DeleteComments($_SESSION['user_id'], $idPost);
                 PostClass::DeletePost($_SESSION['user_id'], $idPost);
+                PostClass::DeletePostImage($idPost);
                 header('location:../posts');
             }
         }

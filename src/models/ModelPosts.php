@@ -52,15 +52,16 @@ class PostClass {
         return $getPosterresult;
     }
 
-    public static function addPost($poster_id, $title, $content) {
+    public static function addPost($poster_id, $title, $content, $image) {
         require('./config.php');
         if (strlen($content) <= 3000) {
             if (strlen($title) <= 50) {
-                $req = $bdd->prepare('INSERT INTO posts (user_id, title, content) VALUES (?,?,?)');
+                $req = $bdd->prepare('INSERT INTO posts (user_id, title, content, image_path) VALUES (?,?,?,?)');
                 $req = $req->execute(array(
                 $poster_id,
                 $title,
-                $content
+                $content,
+                $image
                 ));
             }
         } else { echo 'Invalid Post. Check length or character type.';}
@@ -115,6 +116,11 @@ class PostClass {
             ));
         }
         
+    }
+
+    public static function DeletePostImage($postid) {
+        $thepost = PostClass::GetSinglePost($postid);
+        unlink($thepost[0]->image_path);
     }
 
 
