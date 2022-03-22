@@ -10,6 +10,5 @@
 ## UseCase : 
 ![usecase](https://user-images.githubusercontent.com/63260058/159463580-6e91d9a3-c592-4dcb-b645-c6301bbacfdb.png)
 
-##UserStory : 
-
+## User Story :
 ![user stories](https://user-images.githubusercontent.com/63260058/159463636-9ae609f8-ffa3-4ce9-a662-aafe860d2f2a.png)
